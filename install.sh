@@ -18,7 +18,7 @@ code-server --install-extension CoenraadS.bracket-pair-colorizer
 
 mkdir -p /root/.local/share/code-server/User
 
-echo -e "{
+cat > /root/.local/share/code-server/User/settings.json <<END
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontLigatures": true,
     "terminal.integrated.fontFamily": "monospace",
@@ -26,4 +26,4 @@ echo -e "{
     "window.menuBarVisibility": "toggle",
     "workbench.colorTheme": "Andromeda Bordered",
 }
-" > /root/.local/share/code-server/User/settings.json
+END
