@@ -21,6 +21,7 @@ code-server --install-extension CoenraadS.bracket-pair-colorizer
 mkdir -p /root/.local/share/code-server/User
 
 cat > /root/.local/share/code-server/User/settings.json <<END
+{
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontLigatures": true,
     "terminal.integrated.fontFamily": "monospace",
