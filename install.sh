@@ -5,9 +5,11 @@ curl -fsSL https://code-server.dev/install.sh | sh
 
 mkdir -p /root/.config/code-server
 
+read -p "Masukan password login code-server : " code
+
 echo -e "bind-addr: 0.0.0.0:10
 auth: password
-password: whatdoyouwant
+password: $code
 cert: false
 " > /root/.config/code-server/config.yaml
 
