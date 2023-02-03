@@ -30,3 +30,7 @@ cat > /root/.local/share/code-server/User/settings.json <<END
     "workbench.colorTheme": "Andromeda Bordered",
 }
 END
+
+clear
+
+screen -dmS code code-server
