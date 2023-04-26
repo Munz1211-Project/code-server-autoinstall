@@ -1,25 +1,37 @@
 #!/bin/bash
 
-curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
-curl -fsSL https://code-server.dev/install.sh | sh
+#>> INSTALL CODE-SERVER
+curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run; curl -fsSL https://code-server.dev/install.sh | sh
 
-mkdir -p /root/.config/code-server
-
+#>> INPUT PASSWORD CODE-SERVER
 read -p "Masukan password login code-server : " code
 
-echo -e "bind-addr: 0.0.0.0:10
-auth: password
-password: $code
-cert: false
-" > /root/.config/code-server/config.yaml
+#>> CREATED SYSTEMD CODE-SERVER
+cat > /lib/systemd/system/code-server.service <<END
+[Unit]
+Description=code-server
+After=nginx.service
 
+[Service]
+Type=simple
+Environment=PASSWORD=$code
+ExecStart=/usr/bin/code-server --bind-addr 0.0.0.0:10 --user-data-dir /var/lib/code-server --auth password
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+END
+
+#>> INSTALL PLUGIN CODE-SERVER
 code-server --install-extension dbaeumer.vscode-eslint
 code-server --install-extension FelixIcaza.andromeda
 code-server --install-extension esbenp.prettier-vscode
 code-server --install-extension CoenraadS.bracket-pair-colorizer
 
+#>> CREATED FOLDER CODE-SERVER
 mkdir -p /root/.local/share/code-server/User
 
+#>> CUSTOM FONTS CODE-SERVER
 cat > /root/.local/share/code-server/User/settings.json <<END
 {
     "editor.fontFamily": "JetBrains Mono",
@@ -32,5 +44,19 @@ cat > /root/.local/share/code-server/User/settings.json <<END
 END
 
 clear
+#>> RUN SYSTEMD CODE-SERVER
+sudo systemctl start code-server
+clear
 
-screen -dmS code code-server
+#>> CHECK SYSTEMD CODE-SERVER
+sudo systemctl status code-server
+sleep 5
+
+#>> ENABLED AUTO RESTART SYSTEMD CODE-SERVER
+sudo systemctl enable code-server
+clear
+
+rm ./install.sh
+
+
+
