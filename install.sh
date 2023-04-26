@@ -17,7 +17,7 @@ After=nginx.service
 [Service]
 Type=simple
 Environment=PASSWORD=$code
-ExecStart=/usr/bin/code-server --bind-addr 0.0.0.0:10 --user-data-dir /var/lib/code-server --auth password
+ExecStart=/usr/bin/code-server --bind-addr 0.0.0.0:10 --user-data-dir /root/.local/share/code-server --auth password
 Restart=always
 
 [Install]
