@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 #>> INSTALL CODE-SERVER
 curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run; curl -fsSL https://code-server.dev/install.sh | sh
 
@@ -55,8 +57,6 @@ sleep 5
 #>> ENABLED AUTO RESTART SYSTEMD CODE-SERVER
 sudo systemctl enable code-server
 clear
-
-rm ./install.sh
 
 
 
