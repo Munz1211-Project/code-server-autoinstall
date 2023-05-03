@@ -5,6 +5,8 @@ clear
 #>> INSTALL CODE-SERVER
 curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run; curl -fsSL https://code-server.dev/install.sh | sh
 
+clear
+
 #>> INPUT PASSWORD CODE-SERVER
 read -p "Masukan password login code-server : " code
 
