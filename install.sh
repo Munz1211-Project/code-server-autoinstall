@@ -54,7 +54,6 @@ clear
 
 #>> CHECK SYSTEMD CODE-SERVER
 sudo systemctl status code-server
-sleep 5
 
 #>> ENABLED AUTO RESTART SYSTEMD CODE-SERVER
 sudo systemctl enable code-server
