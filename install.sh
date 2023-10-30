@@ -52,12 +52,9 @@ clear
 sudo systemctl start code-server
 clear
 
-#>> CHECK SYSTEMD CODE-SERVER
-sudo systemctl status code-server
-
 #>> ENABLED AUTO RESTART SYSTEMD CODE-SERVER
 sudo systemctl enable code-server
 clear
 
-
-
+#>> CHECK SYSTEMD CODE-SERVER
+sudo systemctl status code-server
